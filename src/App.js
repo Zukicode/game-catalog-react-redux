@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 //Router
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 //Components
 import Header from './components/Header/Header';
@@ -16,13 +16,15 @@ import NotFound from './pages/NotFound/NotFound';
 function App() {
 	const [openMenu, setOpenMenu] = useState(false);
 	const [selectPage, setSelectPage] = useState(1);
+	const locations = useLocation();
+	console.log(locations);
 
 	React.useEffect(() => {
-		if (window.location.pathname === '/') {
+		if (locations.pathname === '/') {
 			setSelectPage(1);
-		} else if (window.location.pathname === '/games') {
+		} else if (locations.pathname === '/games') {
 			setSelectPage(2);
-		} else if (window.location.pathname === '/catalog') {
+		} else if (locations.pathname === '/catalog') {
 			setSelectPage(3);
 		} else {
 			setSelectPage(2);
@@ -40,6 +42,10 @@ function App() {
 
 			<div className='app-wrapper'>
 				<Routes>
+					<Route
+						path='/game-catalog-react-redux/'
+						element={<Home setSelectPage={setSelectPage} />}
+					/>
 					<Route path='/' element={<Home setSelectPage={setSelectPage} />} />
 					<Route path='/games' element={<Games />} />
 					<Route path='/catalog' element={<Catalog />} />
