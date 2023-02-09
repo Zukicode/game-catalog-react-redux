@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { fetchGamesById } from './../../store/gameDetalies/gameDetalies';
-import { setCatalog } from './../../store/games/gameSlice';
-
 //Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { fetchGamesById } from './../../store/gameDetalies/gameDetalies';
+import { setCatalog, removeFromCatalog } from './../../store/games/gameSlice';
 
 //Components
 import Loader from '../../components/Loader/Loader';
@@ -14,18 +13,33 @@ import Loader from '../../components/Loader/Loader';
 import classes from './GamePage.module.scss';
 
 const GamePage = () => {
+	const [inCatalog, setInCatalog] = React.useState(false);
 	const params = useParams();
 
 	const dispatch = useDispatch();
 	const { detalies, status } = useSelector(state => state.detalies);
+	const { catalog } = useSelector(state => state.game);
 
 	const addCatalogItem = () => {
 		dispatch(setCatalog(detalies));
 	};
 
+	const removeCatalogItem = () => {
+		dispatch(removeFromCatalog(detalies.id));
+	};
+
 	React.useEffect(() => {
 		dispatch(fetchGamesById(params.id));
 	}, [dispatch, params.id]);
+
+	React.useEffect(() => {
+		const arr = catalog.find(item => detalies.id === item.id);
+		if (arr !== undefined) {
+			setInCatalog(true);
+		} else {
+			setInCatalog(false);
+		}
+	}, [inCatalog, detalies, catalog]);
 
 	if (status === 'loading') {
 		return <Loader />;
@@ -76,7 +90,12 @@ const GamePage = () => {
 						}
 						alt='poster'
 					/>
-					<button onClick={addCatalogItem}>Add to catalog</button>
+
+					{inCatalog ? (
+						<button onClick={removeCatalogItem}>Remove from catalog</button>
+					) : (
+						<button onClick={addCatalogItem}>Add to catalog</button>
+					)}
 				</div>
 
 				<div className={classes.description}>

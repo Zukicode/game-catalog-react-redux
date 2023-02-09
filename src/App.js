@@ -17,7 +17,6 @@ function App() {
 	const [openMenu, setOpenMenu] = useState(false);
 	const [selectPage, setSelectPage] = useState(1);
 	const locations = useLocation();
-	console.log(locations);
 
 	React.useEffect(() => {
 		if (locations.pathname === '/') {
