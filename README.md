@@ -8,8 +8,9 @@ Save catalog game in Local Storage.
  React hooks\
  Redux Toolkit\
  Redux Thunk\
- API: https://app.swaggerhub.com/apis-docs/OpenCritic/OpenCritic-API/1.0.0#/\
  SCSS MODULE\
+ API: https://app.swaggerhub.com/apis-docs/OpenCritic/OpenCritic-API/1.0.0#/
+ 
  
 
 ## Available Scripts
