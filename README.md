@@ -1,6 +1,7 @@
 # About Project
 You can select a game and save it to your catalog to play later.\
-Save catalog game in Local Storage\
+
+Save catalog game in Local Storage.\
 
 ### Use in this project:
  React\
