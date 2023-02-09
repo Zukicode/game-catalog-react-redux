@@ -22,6 +22,8 @@ function App() {
 	React.useEffect(() => {
 		if (locations.pathname === '/') {
 			setSelectPage(1);
+		} else if (locations.pathname === '/game-catalog-react-redux/') {
+			setSelectPage(1);
 		} else if (locations.pathname === '/games') {
 			setSelectPage(2);
 		} else if (locations.pathname === '/catalog') {
