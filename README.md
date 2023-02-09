@@ -1,6 +1,14 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# About Project
+You can select a game and save it to your catalog to play later.
+Save catalog game in Local Storage
+Use in this project:
+ React
+ React hooks
+ Redux Toolkit
+ Redux Thunk
+ API: https://app.swaggerhub.com/apis-docs/OpenCritic/OpenCritic-API/1.0.0#/
+ SCSS MODULE
+ 
 
 ## Available Scripts
 
